@@ -39,3 +39,8 @@ def eliminar_cliente(id_cliente):
             del clientes[i]
             return jsonify({'mensaje': 'Cliente eliminado correctamente'})
     return jsonify({'error': 'Cliente no encontrado'}), 404
+
+@cliente_service.route('/mensaje', methods=['GET'])
+def imprimir_mensaje():
+    mensaje = "¡Este es un mensaje de prueba!"
+    return jsonify({'mensaje': mensaje})
