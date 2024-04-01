@@ -38,7 +38,7 @@ jobs:
       run: |
         tmux new-session -d -s myflaskapp 'python app.py'
     - name: Check Flask app status
-      run: ps aux | grep "python app.py"
+      run: pgrep -af "python app.py"
     - name: Test mensaje route
       run: curl http://localhost:8080/mensaje
       
