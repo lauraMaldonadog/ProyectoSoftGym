@@ -34,5 +34,10 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Run Flask app
       run: python app.py &
-    - name: Test mensaje route
-      run: curl http://127.0.0.1:5000/mensaje
+    - name: Install Ngrok
+      run: |
+        wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+        unzip ngrok-stable-linux-amd64.zip
+    - name: Create Ngrok tunnel
+      run: ./ngrok http 5000
+    
