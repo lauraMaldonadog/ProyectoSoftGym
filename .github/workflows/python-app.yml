@@ -55,7 +55,7 @@ jobs:
     
     - name: Restart Nginx
       run: |
-        sudo systemctl restart nginx
+        systemctl restart nginx
         systemctl status nginx.service
         journalctl -xeu nginx.service
     
