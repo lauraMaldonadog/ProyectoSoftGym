@@ -34,30 +34,5 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Run Flask app
       run: python app.py &
-    - name: Install Nginx
-      run: sudo apt-get update && sudo apt-get install nginx -y
-
-    - name: Create Nginx configuration file
-      run: |
-        echo "server {
-                listen 80;
-                location / {
-                  proxy_pass http://localhost:5000;
-                  proxy_set_header Host $host;
-                  proxy_set_header X-Real-IP $remote_addr;
-                  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                  proxy_set_header X-Forwarded-Proto $scheme;
-                }
-              }" | sudo tee /etc/nginx/sites-available/flask-app
-    
-    - name: Enable Nginx site
-      run: sudo ln -s /etc/nginx/sites-available/flask-app /etc/nginx/sites-enabled/
-    
-    - name: Restart Nginx
-      run: |
-        sudo systemctl stop nginx
-        sudo systemctl start nginx
-
-
-    
-        
+    - name: Test mensaje route
+      run: curl http://127.0.0.1:5000/mensaje
