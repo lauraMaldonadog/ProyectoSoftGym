@@ -54,6 +54,9 @@ jobs:
       run: sudo ln -s /etc/nginx/sites-available/flask-app /etc/nginx/sites-enabled/
     
     - name: Restart Nginx
-      run: sudo systemctl restart nginx
+      run: |
+        sudo systemctl restart nginx
+        systemctl status nginx.service
+        journalctl -xeu nginx.service
     
         
