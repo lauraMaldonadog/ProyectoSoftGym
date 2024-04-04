@@ -42,5 +42,5 @@ def eliminar_cliente(id_cliente):
 
 @cliente_service.route('/mensaje', methods=['GET'])
 def imprimir_mensaje():
-    mensaje = "¡Este es un mensaje de prueba!"
+    mensaje = "¡Este es un mensaje de prueba editado!"
     return jsonify({'mensaje': mensaje})
